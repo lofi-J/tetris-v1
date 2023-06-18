@@ -3,8 +3,8 @@ import React from "react";
 import { styled } from "styled-components";
 
 
-const PreviewCell = ({ filled, color, x, y }) => {
-    return <StyledPreviewCell color={color} filled={filled} />
+const PreviewCell = ({ filled, color }) => {
+    return <StyledPreviewCell color={color} filled={filled ? 1 : 0} />
 }
 
 export default PreviewCell;
@@ -15,6 +15,6 @@ const StyledPreviewCell = styled.div`
 
     background-color: ${(props) => (props.filled ? `rgba(${props.color}, 0.8)` : 'transparent')};
     border: 1px solid;
-    border-color: ${(props) => (props.filled ? `aliceblue` : 'transparent')};
+    border-color: ${(props) => (props.filled ? `#000` : 'transparent')};
     border-radius: 4px;
 `

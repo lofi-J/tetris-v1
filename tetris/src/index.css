@@ -26,11 +26,14 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	font-family: 'Teko', sans-serif;
-	background-color: black;
-	color: white;
+	background: radial-gradient(rgb(255, 255, 255), rgb(187, 187, 187));
+	color: black;
 	/* 스크롤 막기 */
 	overflow: hidden;
 	box-sizing: border-box;
+	/* 드래그 막기 */
+	user-select:none;
+	
 }
 ol, ul {
 	list-style: none;
@@ -48,8 +51,8 @@ table {
 	border-spacing: 0;
 }
 button {
-	letter-spacing: 2px;
-	font-family: 'WindowsRegular';
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	color: #3f3f3f;
 }
 h1, p, span, h2{
 	cursor: default;

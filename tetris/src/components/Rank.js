@@ -26,7 +26,7 @@ const RankingPage = () => {
             
             {!list ? <p>Loading...</p> :
             <ul id = "ranks">
-                <li>{list}</li>
+                <h1>랭킹</h1>
             </ul>}
             
         </div>

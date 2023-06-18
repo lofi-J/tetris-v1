@@ -8,11 +8,14 @@ const StyledStage = styled.div`
     grid-template-columns: repeat(10, 1fr);
     
     box-sizing: content-box;
-    border: 5px solid rgba(255, 255, 255, .5);
-    border-radius: 5px;
+    border: 4px solid #000;
+    border-top: none;
+    border-radius: 2px;
+    
     width: 300px;
     height: 600px;
-    background-color: #111;
+    background-color: transparent;
+    
 
     /* 우측 게임 스탯창 및 start 버튼과의 거리 조절 */
     margin-right: 10%;

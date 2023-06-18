@@ -1,6 +1,11 @@
 import { StyledTetrisWrapper, StyledTetris } from "../../css/StyledTetris";
 
+//React
 import { useState } from "react";
+
+// Redux
+import { useDispatch } from "react-redux";
+import { setIsPlayNow } from "../../store/IsPlayNow";
 
 // Components
 import Stage from "./Stage";
@@ -13,15 +18,21 @@ import { usePlayer } from "../../hooks/tetris/usePlayer";
 import { useStage } from "../../hooks/tetris/useStage";
 import { useInterval } from "../../hooks/tetris/useInterval";
 import { useStats } from "../../hooks/tetris/useStats";
+import { usePlaySound } from "../../hooks/tetris/usePlaySound";
 
 // Help, Constance
 import { checkCollision, createStage } from "../../gameHelpers";
 import Preview from "./Preview";
 import { queue } from "../../constants";
+import { clickSound } from "../../hooks/tetris/useClickSound";
+
 
 
 const Tetris = ({setIsStart}) => {
     const [isPlaying, setIsPlaying] = useState(false);
+
+    // Redux
+    const dispatch = useDispatch();
 
     const [dropTime, setDropTime] = useState(null);
     const [gameOver, setGameOver] = useState(false);
@@ -29,6 +40,9 @@ const Tetris = ({setIsStart}) => {
     const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
     const [stage, setStage, rowsCleared, ghostPositions] = useStage(player, resetPlayer);
     const [score, setScore, rows, setRows, level, setlevel] = useStats(rowsCleared);
+
+    // Sound
+    usePlaySound("/sound/play.mp3", isPlaying, gameOver, 1);
 
     const movePlayer = dir => {
         // check x-1, x+1
@@ -38,7 +52,10 @@ const Tetris = ({setIsStart}) => {
     }
 
     const startGame = (e) => {
+        // Sound(click)
+        clickSound(0.2);
         setIsPlaying(true);
+        dispatch(setIsPlayNow(true));
         const target = document.getElementById('TetrisWrpper');
         e.target.blur();
         target.focus();
@@ -116,7 +133,6 @@ const Tetris = ({setIsStart}) => {
         <StyledTetrisWrapper id="TetrisWrpper" role='button' tabIndex='0' onKeyDown={e => move(e)} onKeyUp={keyUp}>
             {gameOver ? (<GameOver score={score} restart = {startGame} setIsStart = {setIsStart}/>) : (
             <StyledTetris>
-                {/* ghost prop은 [] 형태로 pos값들을 저장함 */}
                 <Stage stage={ stage } ghostPos={ghostPositions} />
                 <aside>
                     <Preview queue={queue} />

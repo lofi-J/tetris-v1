@@ -1,5 +1,5 @@
 #Home {
-    background-color: transparent;
+    background: radial-gradient(rgb(255, 255, 255), rgb(187, 187, 187));
     width: 100vw;
     height: 100vh;
 
@@ -9,17 +9,35 @@
     justify-content: center;
 }
 
-#Home > h1 {
+#Tetris {
     font-size: 10rem;
-    color: black;
-    -webkit-text-stroke: 1px rgb(52, 69, 180);
-    text-shadow: 0 0 20px rgb(52, 69, 180);
+    color: #fff;
+    -webkit-text-stroke: 1.5px #000;
+    text-shadow: 0 0 15px #000;
+    z-index: 1;
+    transition: 1s;
+}
+#Tetris:hover {
+    text-shadow: 0 0 30px #000;
 }
 
+
 .button-list {
-    background-color: black;
     display: flex;
     flex-direction: column;
     margin-top: 5rem;
+    z-index: 1;
+    align-items: center;
+}
+.btn {
+    background-color: transparent;
     border: none;
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    width: max-content;
+}
+.btn:hover {
+    box-shadow: 0 5px 5px -5px #000;
 }

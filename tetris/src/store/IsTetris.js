@@ -10,5 +10,5 @@ const IsTetris = createSlice({
     }
 })
 
-export const {setIsTetris} = IsTetris.actions;
+export const { setIsTetris } = IsTetris.actions;
 export default IsTetris;

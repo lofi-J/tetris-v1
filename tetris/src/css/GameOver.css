@@ -1,0 +1,55 @@
+.gameover-modal{
+    width: 50%;
+    height: 60%;
+    color: white;
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.gameover-modal>h1{
+    font-size: 3rem;
+}
+
+.gameover-modal>span{
+    font-size: 2rem;
+}
+.gameover-modal>span>span{
+    font-size: 1.5rem;
+}
+.gameover-modal-buttons{
+    margin-top: 1rem;
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:10px;
+}
+
+.gameover-modal-buttons>button{
+    font-size: 1rem;
+    word-wrap: break-word;
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.gameover-modal>input{
+    background-color: transparent;
+    border:none;
+    color: white;
+    text-align: center;
+    font-size:2rem;
+}
+
+.gameover-modal>input:focus-visible{
+    outline:none;
+}

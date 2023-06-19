@@ -14,7 +14,7 @@ const StyledPreviewCell = styled.div`
     width: auto;
 
     background-color: ${(props) => (props.filled ? `rgba(${props.color}, 0.8)` : 'transparent')};
-    border: 1px solid;
+    border: 1.5px solid;
     border-color: ${(props) => (props.filled ? `#000` : 'transparent')};
     border-radius: 4px;
 `

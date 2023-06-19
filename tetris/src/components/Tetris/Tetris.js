@@ -24,11 +24,11 @@ import { usePlaySound } from "../../hooks/tetris/usePlaySound";
 import { checkCollision, createStage } from "../../gameHelpers";
 import Preview from "./Preview";
 import { queue } from "../../constants";
-import { clickSound } from "../../hooks/tetris/useClickSound";
+import { playSound } from "../../hooks/tetris/playSound";
 
 
 
-const Tetris = ({setIsStart}) => {
+const Tetris = ({ setIsStart }) => {
     const [isPlaying, setIsPlaying] = useState(false);
 
     // Redux
@@ -46,14 +46,14 @@ const Tetris = ({setIsStart}) => {
 
     const movePlayer = dir => {
         // check x-1, x+1
-        if(!checkCollision(player, stage, { x: dir, y: 0 })) {
+        if (!checkCollision(player, stage, { x: dir, y: 0 })) {
             updatePlayerPos({ x: dir, y: 0 });
         }
     }
 
     const startGame = (e) => {
         // Sound(click)
-        clickSound(0.2);
+        playSound('sound/tabSound.wav', 0.2);
         setIsPlaying(true);
         dispatch(setIsPlayNow(true));
         const target = document.getElementById('TetrisWrpper');
@@ -68,38 +68,37 @@ const Tetris = ({setIsStart}) => {
         setRows(0);
         setlevel(1);
     }
-    
+
     const drop = () => {
         //레벨 증가
-        if(rows > (level + 1) * 10) {
+        if (rows > (level + 1) * 10) {
             setlevel(prev => prev + 1);
             // 속도 증가
             setDropTime(1000 / (level + 1) + 200);
         }
-        
-        if(!checkCollision(player, stage, { x: 0, y: 1})) {
+
+        if (!checkCollision(player, stage, { x: 0, y: 1 })) {
             //다음 y좌표가 이동이 가능하면 블럭 한칸 내림
             updatePlayerPos({ x: 0, y: 1, collide: false })
-        } else { 
+        } else {
             //Game Over
             //다음 y좌표 이동 불가 + 현재 죄표가 1보다 작다면? Game Over
-            if(player.pos.y < 1) {
-                // console.log('Game Over!!!');
+            if (player.pos.y < 1) {
                 setGameOver(true);
                 setDropTime(null);
             }
-            updatePlayerPos({x: 0, y: 0, collide: true});
+            updatePlayerPos({ x: 0, y: 0, collide: true });
             setDropTime(1000 / (level + 1) + 200);
         }
     }
     const keyUp = ({ keyCode }) => {
-        if(!gameOver) {
-            if(keyCode === 40) {
+        if (!gameOver) {
+            if (keyCode === 40) {
                 setDropTime(1000);
             }
         }
     }
-    
+
     const dropPlayer = () => {
         setDropTime(null);
         drop();
@@ -109,13 +108,13 @@ const Tetris = ({setIsStart}) => {
     }
 
     const move = ({ keyCode }) => {
-        if(!gameOver) {
-            if(keyCode === 37) {
+        if (!gameOver) {
+            if (keyCode === 37) {
                 movePlayer(-1);
             } else if (keyCode === 39) {
                 movePlayer(1);
             } else if (keyCode === 38) {
-                playerRotate(stage, 1);                
+                playerRotate(stage, 1);
             } else if (keyCode === 32) {
                 hardDrop();
             } else if (keyCode === 40) {
@@ -129,21 +128,21 @@ const Tetris = ({setIsStart}) => {
         drop();
     }, dropTime);
 
-    return(
+    return (
         <StyledTetrisWrapper id="TetrisWrpper" role='button' tabIndex='0' onKeyDown={e => move(e)} onKeyUp={keyUp}>
-            {gameOver ? (<GameOver score={score} restart = {startGame} setIsStart = {setIsStart}/>) : (
-            <StyledTetris>
-                <Stage stage={ stage } ghostPos={ghostPositions} />
-                <aside>
-                    <Preview queue={queue} />
-                    <div>
-                        <Display text={`Score : ${score}`} />
-                        <Display text={`Lines : ${rows}`} />
-                        <Display text={`Level : ${level}`} />
-                        <StartButton callback={startGame} isPlaying={isPlaying} />
-                    </div>
-                </aside>
-            </StyledTetris>
+            {gameOver ? (<GameOver score={score} restart={startGame} setIsStart={setIsStart} />) : (
+                <StyledTetris>
+                    <Stage stage={stage} ghostPos={ghostPositions} />
+                    <aside>
+                        <Preview queue={queue} />
+                        <div>
+                            <Display text={`Score : ${score}`} />
+                            <Display text={`Lines : ${rows}`} />
+                            <Display text={`Level : ${level}`} />
+                            <StartButton callback={startGame} isPlaying={isPlaying} />
+                        </div>
+                    </aside>
+                </StyledTetris>
             )}
         </StyledTetrisWrapper>
     );

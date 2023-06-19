@@ -8,19 +8,19 @@ export default StartButton;
 
 
 const StyledButton = styled.button`
-    font-family: 'WindowsRegular';
-    box-sizing: border-box;
-    margin: 0 0 20px 0;
-    margin-bottom: 0;
-    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 30px;
-    width: 100%;
-    border-radius: 20px;
-    border: none;
-    color: white;
-    background-color: #333;
+    width: max-content;
+    color: #000;
+    background-color: transparent;
     font-size: 1rem;
     outline: none;
-    white-space: nowrap;
+    border: 2px solid #000;
+    text-align: left;
     cursor: pointer;
+    &:hover {
+        border: 2px solid transparent;
+        color: #fff;
+        background-color: #000;
+    }
 `

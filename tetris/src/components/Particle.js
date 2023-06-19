@@ -9,19 +9,14 @@ import { loadFull } from "tsparticles";
 const Particle = () => {
 
     const particlesInit = useCallback(async engine => {
-        console.log(engine);
         await loadFull(engine);
     }, []);
 
-    const particlesLoaded = useCallback(async container => {
-        console.log(container);
-    }, []);
 
     return (
         <Particles
             canvasClassName="canvas"
             init={particlesInit}
-            loaded={particlesLoaded}
             options={{
                 fpsLimit: 60,
                 interactivity: {

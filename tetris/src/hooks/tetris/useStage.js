@@ -7,7 +7,6 @@ export const useStage = (player, resetPlayer) => {
     const [rowsCleared, setRowsCleared] = useState(0);    
     const [ghostPositions, setGhostPositions] = useState([]);
 
-    
 
 
     useEffect( () => {
@@ -25,7 +24,7 @@ export const useStage = (player, resetPlayer) => {
             }, []);
 
         const calculateGhostPos = (stage) => {
-            const ghostPos = [];
+            let ghostPos = [];
             const clonedPlayer = JSON.parse(JSON.stringify(player));
             
             for(let i=0; i<20; i++) {
@@ -44,7 +43,16 @@ export const useStage = (player, resetPlayer) => {
                         ghostPos.push({x: x + calculatedPos.x, y: y + calculatedPos.y});
                     }   
                 })
-            })            
+            })
+            
+            // player가 ghost와 만나기전에 고스트 블럭을 지우기
+            ghostPos.forEach((value) => {
+                if(value.y <= player.pos.y+3) {
+                    ghostPos = [];
+                    return;
+                }
+            })
+            
             return ghostPos;
         }
         // Ghost Position 

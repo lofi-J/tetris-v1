@@ -1,8 +1,8 @@
 import { Howl } from "howler";
 
-export const clickSound = (level=0.2) => {
+export const playSound = (url, level=0.2) => {
     const sound = new Howl({
-        src: ["/sound/tabSound.wav"],
+        src: [url],
         volume: level,
         loop: false,
     })

@@ -42,14 +42,15 @@
     border: none;
 }
 
-.gameover-modal>input{
-    background-color: transparent;
-    border:none;
-    color: #000;
-    text-align: center;
-    font-size:2rem;
+.input_form {
+    display: flex;
 }
-
-.gameover-modal>input:focus-visible{
-    outline:none;
+.input_form > input {
+    padding: 5px;
+    background-color: transparent;
+    display:block;
+    width: max-content;
+    border:none;
+    outline: none;
+    border-bottom:1px solid #757575;
 }

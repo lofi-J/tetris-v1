@@ -12,10 +12,11 @@ const StyledStage = styled.div`
     border-top: none;
     border-radius: 2px;
     
+    box-shadow: 0 10px 10px -10px #000;
+    
     width: 300px;
     height: 600px;
-    background-color: transparent;
-    
+    background-color: transparent;    
 
     /* 우측 게임 스탯창 및 start 버튼과의 거리 조절 */
     margin-right: 10%;

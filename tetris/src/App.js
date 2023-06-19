@@ -10,13 +10,12 @@ import Particle from "./components/Particle";
 
 
 function App() {
-    return (
-      <Provider store={store}>
-          <Particle />
-          <Game />
-      </Provider>
-    );
+	return (
+		<Provider store={store}>
+			<Particle />
+			<Game />
+		</Provider>
+	);
 }
 
 export default App;
- 

@@ -7,6 +7,10 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setIsPlayNow } from "../../store/IsPlayNow";
 
+// FontAwesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
+
 // Components
 import Stage from "./Stage";
 import Display from "./Display";
@@ -28,7 +32,7 @@ import { playSound } from "../../hooks/tetris/playSound";
 
 
 
-const Tetris = ({ setIsStart }) => {
+const Tetris = ({ setIsStart, onClickHome }) => {
     const [isPlaying, setIsPlaying] = useState(false);
 
     // Redux
@@ -142,6 +146,8 @@ const Tetris = ({ setIsStart }) => {
                             <StartButton callback={startGame} isPlaying={isPlaying} />
                         </div>
                     </aside>
+                    
+                    <FontAwesomeIcon className="backToHome" icon={faArrowLeftLong} onClick={onClickHome} />
                 </StyledTetris>
             )}
         </StyledTetrisWrapper>

@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 
 export const StyledTetrisWrapper = styled.div`
+    position: relative;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -31,5 +32,13 @@ export const StyledTetris = styled.div`
         display: flex;
         flex-direction: column;
         justify-content:space-between;
+    }
+
+    .backToHome {
+        color: #000;
+        position: absolute;
+        font-size: 1.5rem;
+        top: 5vw;
+        left: 5vw;
     }
 `

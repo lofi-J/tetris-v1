@@ -67,7 +67,7 @@ const Game = () => {
 
     return (
         <div className="Game">
-            {isStart ? <Tetris setIsStart={onClickSingle} /> :
+            {isStart ? <Tetris setIsStart={onClickSingle} onClickHome={onClickHome} /> :
                 isRank ? <RankingPage onClickHome={onClickHome} setIsRank={onClickRank} /> :
 
                 (<div id="Home">

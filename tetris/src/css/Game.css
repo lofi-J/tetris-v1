@@ -41,3 +41,11 @@
 .btn:hover {
     box-shadow: 0 5px 5px -5px #000;
 }
+
+.volumn-icon {
+    position: absolute;
+    top: 5vw;
+    right: 5vw;
+    font-size: 1.5rem;
+    opacity: .8;
+}

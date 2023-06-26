@@ -20,7 +20,8 @@
     "react-tsparticles": "^2.10.1",
     "styled-components": "^6.0.0-rc.3",
     "tsparticles": "^2.10.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "howler": "^2.2.3"
   },
   "scripts": {
     "start": "react-scripts start",

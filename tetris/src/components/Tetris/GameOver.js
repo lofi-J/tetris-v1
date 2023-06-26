@@ -1,6 +1,6 @@
 import "../../css/GameOver.css"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react";
 
 import axios from 'axios';
 
@@ -20,6 +20,7 @@ const GameOver = ({ score, restart, setIsStart }) => {
 			.then(response => {
 				console.log('성공');
 				console.log(`data: ${response.data}`);
+				setIsStart();
 			})
 			.catch(error => {
 				console.log('에러!!!');
@@ -28,7 +29,6 @@ const GameOver = ({ score, restart, setIsStart }) => {
 	}
 
 	useEffect(() => {
-		console.log('click sava score')
 		if (inputRef.current) {
 			inputRef.current.focus();
 		}

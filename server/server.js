@@ -26,14 +26,14 @@ app.get('/', (req, res) => {
 
 //SELECT * FROM rank_table ORDER BY score DESC
 app.get('/api/ranking', (req, res) => {
-    db.query('SELECT * FROM rank_table ORDER BY score DESC', (error, results) => {
+    db.query('SELECT * FROM rank_table ORDER BY score DESC Limit 100', (error, results) => {
         if(error) {
             console.error('Error fetching data');
+            console.log()
             res.status(500).send('Error fetching data');
             return;
         } else {
             console.log('Data fetched successfully');
-            console.log(results);
             res.status(200).json(results);
         }
     });
@@ -50,10 +50,11 @@ app.post('/api/data', (req, res) => {
             res.status(500).send('데이터 삽입중 에러발생.');
             return;
         }
-        console.log('데이터 삽입 성공.');
+        console.log(`name: ${data.name}, score: ${data.score}`);
         res.status(200).send('데이터 삽입 성공.');
     })
 })
+
 
 
 app.listen(app.get('port'), () => {

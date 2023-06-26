@@ -8,7 +8,6 @@ import Particle from "./components/Particle";
 
 
 
-
 function App() {
 	return (
 		<Provider store={store}>

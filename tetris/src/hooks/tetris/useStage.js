@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { checkCollision, createStage } from "../../gameHelpers";
+import { playSound } from "./playSound";
 
 export const useStage = (player, resetPlayer) => {
     const [stage, setStage] = useState(createStage());
@@ -17,6 +18,7 @@ export const useStage = (player, resetPlayer) => {
                 if(row.findIndex(cell => cell[0] === 0) ===-1) {
                     setRowsCleared(prev => prev + 1);
                     ack.unshift(new Array(newStage[0].length).fill([0, 'clear']));
+                    playSound('/sound/line_clear.mp3', .2);
                     return ack;
                 }
                 ack.push(row);
@@ -77,7 +79,6 @@ export const useStage = (player, resetPlayer) => {
             return newStage;
         }
         
-        // Update Block Position as Stage State
         setStage(prev => updateStage(prev));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

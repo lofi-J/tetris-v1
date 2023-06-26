@@ -1,0 +1,13 @@
+.setting-page {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    color: red;
+}
+.backToHome {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 5vw;
+    left: 5vw;
+    color: #000;
+}

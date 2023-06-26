@@ -2,12 +2,15 @@ import "../../css/GameOver.css"
 
 import { useEffect, useRef, useState } from "react";
 
+import { useSelector } from "react-redux";
+
 import axios from 'axios';
 
 import { playSound } from "../../hooks/tetris/playSound";
 
 
 const GameOver = ({ score, restart, setIsStart }) => {
+	const isMute = useSelector((store) => store.isMute.value);
 	// Ranking
 	const [isRank, setIsRank] = useState(false);
 
@@ -39,11 +42,13 @@ const GameOver = ({ score, restart, setIsStart }) => {
 	}
 	const onClickSave = () => {
 		setIsRank(true);
-		playSound('/sound/tabSound/wav', 0.2);
+		playSound('/sound/click.mp3', 0.2);
 	}
 	useEffect(() => {
-		playSound('/sound/gameOver.wav', 0.2); // game over sound
-	}, [])
+		if(!isMute) {
+			playSound('/sound/gameOver.wav', 0.2); // game over sound
+		}
+	}, [isMute]);
 
 	return (
 		<div className="gameover-modal">

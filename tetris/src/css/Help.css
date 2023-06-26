@@ -7,6 +7,7 @@
     padding-left: 3rem;
     margin-bottom: 2rem;
     width: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .icons {
     display: flex;
@@ -18,7 +19,7 @@
 }
 
 .question {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-right: 2rem;
     margin-bottom: 2rem;
 }
@@ -31,7 +32,7 @@ svg {
 .spacebar {
     font-size: .8rem;
     margin-right: 1.5rem;
-    border: 1px solid white;
+    border: 2px solid #000;
     border-radius: 2px;
     padding: 4px;
 }

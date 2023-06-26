@@ -6,6 +6,7 @@ import { useState } from "react";
 // Redux
 import { useDispatch } from "react-redux";
 import { setIsPlayNow } from "../../store/IsPlayNow";
+import { useSelector } from "react-redux";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,6 +35,7 @@ import { playSound } from "../../hooks/tetris/playSound";
 
 const Tetris = ({ setIsStart, onClickHome }) => {
     const [isPlaying, setIsPlaying] = useState(false);
+    const isMute = useSelector((store) => store.isMute.value);
 
     // Redux
     const dispatch = useDispatch();
@@ -46,7 +48,7 @@ const Tetris = ({ setIsStart, onClickHome }) => {
     const [score, setScore, rows, setRows, level, setlevel] = useStats(rowsCleared);
 
     // Sound
-    usePlaySound("/sound/play.mp3", isPlaying, gameOver, 1);
+    usePlaySound("/sound/LUNA_full.wav", isPlaying, gameOver, .1);
 
     const movePlayer = dir => {
         // check x-1, x+1
@@ -57,7 +59,9 @@ const Tetris = ({ setIsStart, onClickHome }) => {
 
     const startGame = (e) => {
         // Sound(click)
-        playSound('sound/tabSound.wav', 0.2);
+        if (!isMute) {
+            playSound('sound/click.mp3', 0.2);
+        }
         setIsPlaying(true);
         dispatch(setIsPlayNow(true));
         const target = document.getElementById('TetrisWrpper');
@@ -109,6 +113,7 @@ const Tetris = ({ setIsStart, onClickHome }) => {
     }
     const hardDrop = () => {
         setDropTime(0);
+        if(!isMute) playSound('/sound/hard_drop.mp3', .2);
     }
 
     const move = ({ keyCode }) => {
@@ -146,7 +151,7 @@ const Tetris = ({ setIsStart, onClickHome }) => {
                             <StartButton callback={startGame} isPlaying={isPlaying} />
                         </div>
                     </aside>
-                    
+
                     <FontAwesomeIcon className="backToHome" icon={faArrowLeftLong} onClick={onClickHome} />
                 </StyledTetris>
             )}

@@ -16,6 +16,7 @@ import { setIsMute } from "../store/IsMute";
 // Components
 import Tetris from "./Tetris/Tetris";
 import RankingPage from "./Rank";
+import Help from "./Help";
 
 // Sound
 import { useBGM } from "../hooks/tetris/useBGM";
@@ -30,8 +31,8 @@ const Game = () => {
     const dispatch = useDispatch();
 
     const onClickSingle = () => {
-        if(!isMute) {
-            playSound('/sound/tabSound.wav', 0.2);
+        if (!isMute) {
+            playSound('/sound/click.mp3', 0.3);
         }
         if (isStart === false) {
             setIsStart(true);
@@ -42,27 +43,32 @@ const Game = () => {
     }
     const [isRank, setIsRank] = useState(false);
     const onClickRank = () => {
-        playSound('/sound/tabSound.wav', 0.2);
+        if (!isMute) {
+            playSound('/sound/click.mp3', 0.3);
+        }
         if (isRank === false) {
             setIsRank(true);
         } else {
             setIsRank(false);
         }
     }
+
+
     const onClickHome = () => {
+        // Reset States
         setIsStart(false);
         setIsRank(false);
         dispatch(setIsPlayNow(false));
     }
 
     const onClickToggle = () => {
-        if(isMute) {
+        if (isMute) {
             dispatch(setIsMute(false));
         } else {
             dispatch(setIsMute(true));
         }
     }
-    
+
     useBGM('/sound/home.mp3', isPlayNow, 0.2);
 
     return (
@@ -70,15 +76,15 @@ const Game = () => {
             {isStart ? <Tetris setIsStart={onClickSingle} onClickHome={onClickHome} /> :
                 isRank ? <RankingPage onClickHome={onClickHome} setIsRank={onClickRank} /> :
 
-                (<div id="Home">
-                    <h1 id="Tetris">TETRIS</h1>
-                    <div className="button-list">
-                        <button className="btn" onClick={onClickSingle}>Single Play</button>
-                        <button className="btn" onClick={onClickRank}>Ranking</button>
-                        <button className="btn">Setting</button>
-                    </div>
-                    <FontAwesomeIcon className="volumn-icon" icon={isMute ? faVolumeXmark : faVolumeLow} onClick={onClickToggle} />
-                </div>)
+                    (<div id="Home">
+                        <h1 id="Tetris">TETRIS</h1>
+                        <div className="button-list">
+                            <button className="btn" onClick={onClickSingle}>Single Play</button>
+                            <button className="btn" onClick={onClickRank}>Ranking</button>
+                            <Help />
+                        </div>
+                        <FontAwesomeIcon className="volumn-icon" icon={isMute ? faVolumeXmark : faVolumeLow} onClick={onClickToggle} />
+                    </div>)
             }
         </div>
     )

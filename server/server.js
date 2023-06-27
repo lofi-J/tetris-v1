@@ -4,7 +4,7 @@ const path = require('path');
 
 // DB
 const mysql = require('mysql2');
-const dbconfig = require('./config/db');
+const dbconfig = require('./config/db').user;
 
 const db = mysql.createConnection(dbconfig);
 
@@ -27,13 +27,11 @@ app.get('/', (req, res) => {
 //SELECT * FROM rank_table ORDER BY score DESC
 app.get('/api/ranking', (req, res) => {
     db.query('SELECT * FROM rank_table ORDER BY score DESC Limit 100', (error, results) => {
-        if(error) {
+        if (error) {
             console.error('Error fetching data');
-            console.log()
             res.status(500).send('Error fetching data');
             return;
         } else {
-            console.log('Data fetched successfully');
             res.status(200).json(results);
         }
     });
@@ -42,15 +40,14 @@ app.get('/api/ranking', (req, res) => {
 
 // POST (유저로부터 데이터 받으면 DB에 추가
 app.post('/api/data', (req, res) => {
-    const data = req.body;    
+    const data = req.body;
     const query = `INSERT INTO rank_table (name, score, created) VALUES (?, ?, NOW())`;
     db.query(query, [data.name, data.score], (error, results) => {
-        if(error) {
+        if (error) {
             console.error('데이터 삽입중 에러발생: ', error);
             res.status(500).send('데이터 삽입중 에러발생.');
             return;
         }
-        console.log(`name: ${data.name}, score: ${data.score}`);
         res.status(200).send('데이터 삽입 성공.');
     })
 })

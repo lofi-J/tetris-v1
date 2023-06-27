@@ -11,7 +11,6 @@ export const StyledTetrisWrapper = styled.div`
     align-items: center;
     justify-content: center;
     
-    background: radial-gradient(rgb(255, 255, 255), rgb(187, 187, 187));
     &:focus{
         outline:none;
         box-shadow:none;

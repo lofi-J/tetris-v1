@@ -7,11 +7,9 @@ import { loadFull } from "tsparticles";
 
 
 const Particle = () => {
-
     const particlesInit = useCallback(async engine => {
         await loadFull(engine);
     }, []);
-
 
     return (
         <Particles
@@ -91,9 +89,6 @@ const Particle = () => {
                 detectRetina: true,
             }}
         />
-
-
-
     );
 }
 

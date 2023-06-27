@@ -45,7 +45,7 @@ const GameOver = ({ score, restart, setIsStart }) => {
 		playSound('/sound/click.mp3', 0.2);
 	}
 	useEffect(() => {
-		if(!isMute) {
+		if (!isMute) {
 			playSound('/sound/gameOver.wav', 0.2); // game over sound
 		}
 	}, [isMute]);
@@ -61,11 +61,12 @@ const GameOver = ({ score, restart, setIsStart }) => {
 			<div className="gameover-modal-buttons">
 				<button onClick={restart}>Play Again</button>
 				<button onClick={setIsStart}>Main Menu</button>
-				{!isRank ? <button onClick={onClickSave}>Save Score</button> : (
-					<form onSubmit={postTrain} className="input_form">
-						<input type="text" required onChange={handleInputChange} ref={inputRef} />
-						<button type="button" onClick={postTrain}>Save</button>
-					</form>
+				{score === 0 ? null :
+				!isRank ? <button onClick={onClickSave}>Save Score</button> : (
+				<form onSubmit={postTrain} className="input_form">
+					<input type="text" required onChange={handleInputChange} ref={inputRef} />
+					<button type="button" onClick={postTrain}>Save</button>
+				</form>
 				)}
 			</div>
 		</div>

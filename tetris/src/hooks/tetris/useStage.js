@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 
 import { checkCollision, createStage } from "../../gameHelpers";
 import { playSound } from "./playSound";
+import { useSelector } from "react-redux";
 
 export const useStage = (player, resetPlayer) => {
     const [stage, setStage] = useState(createStage());
     const [rowsCleared, setRowsCleared] = useState(0);    
     const [ghostPositions, setGhostPositions] = useState([]);
 
+    const isMute = useSelector((store) => store.isMute.value);
+    
 
 
     useEffect( () => {
@@ -18,7 +21,9 @@ export const useStage = (player, resetPlayer) => {
                 if(row.findIndex(cell => cell[0] === 0) ===-1) {
                     setRowsCleared(prev => prev + 1);
                     ack.unshift(new Array(newStage[0].length).fill([0, 'clear']));
-                    playSound('/sound/line_clear.mp3', .2);
+
+                    if(!isMute) playSound('/sound/line_clear.mp3', .08);
+                    
                     return ack;
                 }
                 ack.push(row);

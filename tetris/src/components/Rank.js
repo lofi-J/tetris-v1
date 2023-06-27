@@ -12,7 +12,7 @@ import Error404 from "./Error404";
 
 
 
-const RankingPage = ({onClickHome}) => {
+const RankingPage = ({ onClickHome }) => {
     //DB 데이터 가져오기
     const fetchedDataFromDB = async () => {
         try {
@@ -24,12 +24,14 @@ const RankingPage = ({onClickHome}) => {
             console.error(error);
         }
     }
-    const [list, setList] = useState([]);
-    useEffect(() => { fetchedDataFromDB().then(data => setList(data))}, []);
-    if(list === undefined) return <Error404 onClickHome={onClickHome} />
-    if(list.length < 1) return <Loading />
+    const [list, setList] = useState(null);
+    useEffect(() => { fetchedDataFromDB().then(data => setList(data)) }, []);
 
-    return(
+    if (list === undefined) return <Error404 onClickHome={onClickHome} />
+    if (list === null) return <Loading />
+
+
+    return (
         <StyledTable>
             <table>
                 <th>RANK</th>
@@ -39,8 +41,8 @@ const RankingPage = ({onClickHome}) => {
 
                 {list.map((e, index) => {
                     return (
-                        <tr> 
-                            <td>{index+1}</td>
+                        <tr>
+                            <td>{index + 1}</td>
                             <td>{e.name}</td>
                             <td>{e.score}</td>
                             <td>{e.created.slice(0, 10)}</td>

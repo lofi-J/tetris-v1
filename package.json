@@ -10,5 +10,21 @@
     "express": "^4.18.2",
     "mysql2": "^3.3.5",
     "path": "^0.12.7"
-  }  
+  },
+  "description": "# 테트리스 싱글 플레이와 점수(랭킹) 시스템 개발",
+  "main": "server/server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lofi-J/tetris-v1.git"
+  },
+  "keywords": [
+    "tetris"
+  ],
+  "author": "lofi-J",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lofi-J/tetris-v1/issues"
+  },
+  "homepage": "https://github.com/lofi-J/tetris-v1#readme"
 }

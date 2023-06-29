@@ -1,5 +1,7 @@
 {
-  "dependencies": {
-    "howler": "^2.2.3"
+  "name": "tetris_pro",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server/server.js"
   }
 }

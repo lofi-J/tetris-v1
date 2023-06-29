@@ -1,4 +1,3 @@
-import "../css/Rank.css";
 import { styled } from 'styled-components';
 
 import { useEffect, useState } from "react";
@@ -63,7 +62,7 @@ const StyledTable = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
+    
     .backToHome {
         position: absolute;
         top: 5vw;

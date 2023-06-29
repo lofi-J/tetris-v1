@@ -152,7 +152,7 @@ const Tetris = ({ setIsStart, onClickHome }) => {
                         </div>
                     </aside>
 
-                    <FontAwesomeIcon className="backToHome" icon={faArrowLeftLong} onClick={onClickHome} />
+                    <FontAwesomeIcon className="backToHome" icon={faArrowLeftLong} onClick={onClickHome} style={{cursor:'pointer'}}/>
                 </StyledTetris>
             )}
         </StyledTetrisWrapper>

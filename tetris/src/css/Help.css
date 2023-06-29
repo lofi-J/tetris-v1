@@ -9,13 +9,16 @@
     width: auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .icons {
     display: flex;
     flex-direction: column;
+    cursor:default;
 }
 .texts {
     display: flex;
     flex-direction: column;
+    cursor:default;
 }
 
 .question {
@@ -28,6 +31,10 @@ svg {
     font-size: 1rem;
     margin-right: 1.5rem;
     margin-bottom: 1rem;
+}
+
+.help>svg{
+    cursor:pointer;
 }
 .spacebar {
     font-size: .8rem;

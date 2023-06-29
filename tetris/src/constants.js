@@ -1,6 +1,81 @@
+// export const TETROMINOS =
+// {
+//     0: { shape: [[0]], color: 'transparent', border: 'transparent'},
+//     I: {
+//         shape: [
+//             ['I', 'I', 'I', 'I'],
+//             [0, 0, 0, 0],
+//             [0, 0, 0, 0],
+//             [0, 0, 0, 0]
+//         ],
+//         color: "rgba(0, 255, 255, 0.8)",
+//         border: 'rgba(0, 150, 150, 1)',
+//     },
+//     J: {
+//         shape: [
+//             [0,   'J', 0, 0],
+//             [0,   'J', 0, 0],
+//             ['J', 'J', 0, 0]
+//         ],
+//         color: "rgba(0, 0, 255, 0.8)",
+//         border: "rgba(0, 0, 150, 1)"
+//     },
+//     L: {
+//         shape: [
+//             [0, 'L', 0,  0],
+//             [0, 'L', 0,  0],
+//             [0, 'L', 'L', 0],
+//             [0, 0, 0, 0],
+//         ],
+//         color: "rgba(255, 127, 0, 0.8)",
+//         border: "rgba(150, 75, 0, 1)"
+//     },
+//     O: {
+//         shape: [
+//             [0, 0, 0, 0],
+//             [0, 'O', 'O', 0],
+//             [0, 'O', 'O', 0],
+//             [0, 0, 0, 0],
+//         ],
+//         color: "rgba(255, 255, 0, 0.8)",
+//         border: 'rgba(150, 150, 0, 1)'
+//     },
+//     S: {
+//         shape: [
+//             [0, 0, 0, 0],
+//             [0, 'S', 'S', 0],
+//             ['S', 'S', 0, 0],
+//             [0, 0, 0, 0]
+//         ],
+//         color: "rgba(0, 255, 0, 0.8)",
+//         border: "rgba(0, 150, 0, 1)"
+//     },
+//     T: {
+//         shape: [
+//             [0, 'T', 0, 0],
+//             ['T','T','T', 0],
+//             [0, 0, 0, 0],
+//             [0, 0, 0, 0],
+//         ],
+//         color: "rgba(128, 0, 128, 0.8)",
+//         border: '#660066'
+//     },
+//     Z: {
+//         shape: [
+//             [0, 0, 0, 0],
+//             ['Z', 'Z', 0, 0],
+//             [0,'Z','Z', 0],
+//             [0, 0, 0, 0]
+//         ],
+//         color: "rgba(255, 0, 0, 0.8)",
+//         border: "rgba(150, 0, 0, 1)",
+//     }
+// }
+
+
 export const TETROMINOS =
 {
-    0: { shape: [[0]], color: 'transparent', border: 'transparent'},
+    0: { shape: [[0]], color: 'transparent', border: 'transparent', shadow: 'transparent'},
     I: {
         shape: [
             ['I', 'I', 'I', 'I'],
@@ -8,8 +83,9 @@ export const TETROMINOS =
             [0, 0, 0, 0],
             [0, 0, 0, 0]
         ],
-        color: "rgba(0, 255, 255, 0.8)",
-        border: 'rgba(0, 150, 150, 1)',
+        color: "transparent",
+        border: "rgba(0, 0, 0, 0.8)",
+
     },
     J: {
         shape: [
@@ -17,8 +93,8 @@ export const TETROMINOS =
             [0,   'J', 0, 0],
             ['J', 'J', 0, 0]
         ],
-        color: "rgba(0, 0, 255, 0.8)",
-        border: "rgba(0, 0, 150, 1)"
+        color: "transparent",
+        border: "rgba(0, 0, 0, 0.8)",
     },
     L: {
         shape: [
@@ -27,8 +103,8 @@ export const TETROMINOS =
             [0, 'L', 'L', 0],
             [0, 0, 0, 0],
         ],
-        color: "rgba(255, 127, 0, 0.8)",
-        border: "rgba(150, 75, 0, 1)"
+        color: "transparent",
+        border: "rgba(0, 0, 0, 0.8)",
     },
     O: {
         shape: [
@@ -37,8 +113,8 @@ export const TETROMINOS =
             [0, 'O', 'O', 0],
             [0, 0, 0, 0],
         ],
-        color: "rgba(255, 255, 0, 0.8)",
-        border: 'rgba(150, 150, 0, 1)'
+        color: "transparent",
+        border: "rgba(0, 0, 0, 0.8)",
     },
     S: {
         shape: [
@@ -47,8 +123,8 @@ export const TETROMINOS =
             ['S', 'S', 0, 0],
             [0, 0, 0, 0]
         ],
-        color: "rgba(0, 255, 0, 0.8)",
-        border: "rgba(0, 150, 0, 1)"
+        color: "transparent",
+        border: "rgba(0, 0, 0, 0.8)",
     },
     T: {
         shape: [
@@ -57,8 +133,8 @@ export const TETROMINOS =
             [0, 0, 0, 0],
             [0, 0, 0, 0],
         ],
-        color: "rgba(128, 0, 128, 0.8)",
-        border: '#660066'
+        color: "transparent",
+        border: "rgba(0, 0, 0, 0.8)",
     },
     Z: {
         shape: [
@@ -67,10 +143,11 @@ export const TETROMINOS =
             [0,'Z','Z', 0],
             [0, 0, 0, 0]
         ],
-        color: "rgba(255, 0, 0, 0.8)",
-        border: "rgba(150, 0, 0, 1)",
+        color: "transparent",
+        border: "rgba(0, 0, 0, 0.8)",
     }
 }
+
 
 
 class Queue {
@@ -112,3 +189,6 @@ export const queue = new Queue();
 export const randomTetromino = () => {
     return queue.dequeue();
 }
+
+
+

@@ -7,9 +7,10 @@ import { TETROMINOS } from '../../constants';
 const Cell = ({ type, isGhost }) => {
     const color = TETROMINOS[type].color;
     const border = TETROMINOS[type].border;
+    
     return isGhost ? 
-        <StyledCell2 ghost={'true'} color={color} border={border}></StyledCell2> :
-        <StyledCell1 type={type} color={color} border={border}></StyledCell1>;
+        <StyledCell2 ghost={'true'} color={color} border={border}><div></div></StyledCell2> :
+        <StyledCell1 type={type} color={color} border={border}><div></div></StyledCell1>;
 }
 
 // export default Cell;
@@ -22,10 +23,19 @@ const StyledCell1 = styled.div`
     justify-content: center;
     width: auto;
 
-
     border: 2px solid ${props => props.border};
-    border-radius: 2px;
-    background: radial-gradient(${props => props.color}, ${props => props.border});
+    border-radius: 4px;
+    background-color: ${props => props.color};
+    
+
+    div {
+        width: 55%;
+        height: 55%;
+        
+        border: 2px solid ${props => props.color};
+        border-radius: 4px;
+        background-color: ${props => props.border};
+    }
 `
 
 // 고스트 블럭
@@ -37,6 +47,5 @@ const StyledCell2 = styled.div`
 
     border: 1.5px solid rgba(0, 0, 0, 0.5);
     border: 1.5px solid black;
-    border-radius: 2px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-radius: 4px;
 `

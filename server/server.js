@@ -8,6 +8,8 @@ const dbconfig = require('./config/db').user;
 
 const db = mysql.createConnection(dbconfig);
 
+const badWords = require('./config/badWord');
+
 
 // app
 const app = express();
@@ -38,6 +40,12 @@ app.get('/api/ranking', (req, res) => {
 })
 
 
+// Bad Word api
+app.get('/api/badword', (req, res) => {
+    res.json({ badWords });
+})
+
+
 // POST (유저로부터 데이터 받으면 DB에 추가
 app.post('/api/data', (req, res) => {
     const data = req.body;
@@ -51,7 +59,6 @@ app.post('/api/data', (req, res) => {
         res.status(200).send('데이터 삽입 성공.');
     })
 })
-
 
 
 app.listen(app.get('port'), () => {

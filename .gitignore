@@ -1,5 +1,4 @@
-server/config/
-server/node_modules
-tetris/node_modules
+config
+node_modules
 .DS_Store
 .env

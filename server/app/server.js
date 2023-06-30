@@ -3,7 +3,7 @@ const cors = require('cors');
 const path = require('path');
 require('dotenv').config({path: __dirname + '/../../.env'});
 
-
+//               /app/server/app/server.js
 // DB
 const mysql = require('mysql2');
 const dbconfig = require('../config/db').user;

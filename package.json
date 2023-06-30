@@ -7,7 +7,7 @@
     "start": "cd server && cd app && node server.js"
   },
   "description": "# 테트리스 싱글 플레이와 점수(랭킹) 시스템 개발",
-  "main": "server/app/server.js",
+  "main": "server.js",
   "devDependencies": {},
   "repository": {
     "type": "git",

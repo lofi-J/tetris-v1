@@ -24,7 +24,9 @@ app.use(express.json());
 // GET Request
 app.get('/', (req, res) => {
     res.sendFile(__dirname, '/../../tetris/build/index.html');
-})
+});
+
+
 
 //SELECT * FROM rank_table ORDER BY score DESC
 app.get('/api/ranking', (req, res) => {
@@ -37,7 +39,7 @@ app.get('/api/ranking', (req, res) => {
             res.status(200).json(results);
         }
     });
-})
+});
 
 
 // Bad Word api

@@ -8,6 +8,8 @@ const mysql = require('mysql2');
 const dbconfig = require('../config/db').user;
 
 const db = mysql.createConnection(dbconfig);
+db.connect();
+
 
 const badWords = require('../config/badWord');
 
@@ -30,15 +32,10 @@ app.get('/', (req, res) => {
 
 //SELECT * FROM rank_table ORDER BY score DESC
 app.get('/api/ranking', (req, res) => {
-    db.query('SELECT * FROM rank_table ORDER BY score DESC Limit 100', (error, results) => {
-        if (error) {
-            console.error('Error fetching data');
-            res.status(500).send('Error fetching data');
-            return;
-        } else {
-            res.status(200).json(results);
-        }
-    });
+    const query = 'SELECT * FROM rank_table ORDER BY score DESC LIMIT 100';
+    db.query(query, (error, results) => {
+        res.status(200).json(results);
+    })
 });
 
 

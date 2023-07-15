@@ -6,7 +6,7 @@
   "license": "MIT",
   "description": "",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "cd app && nodemon server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

@@ -7,9 +7,31 @@ require('dotenv').config({path: __dirname + '/../../.env'});
 const mysql = require('mysql2');
 const dbconfig = require('../config/db').user;
 
-const db = mysql.createConnection(dbconfig);
-db.connect();
+let db;
+function dataBaseConnection() {
+    db = mysql.createConnection(dbconfig);
 
+    db.connect((err) => {
+        if(err) {
+            console.error("Error MySQL연결 실패: ", err);
+            // re-connect
+            setTimeout(dataBaseConnection(), 5000);
+        } else {
+            console.log('Connected to MySQL server');
+        }
+    });
+
+    db.on('error', (err) => {
+        console.error("MySQL connection error: ", err);
+        if(err.code === "read ECONNRESET") {
+            dataBaseConnection();
+        } else {
+            throw err;
+        }
+    })
+}
+// start DB
+dataBaseConnection();
 
 const badWords = require('../config/badWord');
 

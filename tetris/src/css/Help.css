@@ -3,13 +3,15 @@
     bottom: 0px;
     left: 0px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding-left: 3rem;
     margin-bottom: 2rem;
     width: auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+.help__box {
+    display: flex;
+}
 .icons {
     display: flex;
     flex-direction: column;
@@ -22,6 +24,7 @@
 }
 
 .question {
+    align-self: flex-start;
     font-size: 1.5rem;
     margin-right: 2rem;
     margin-bottom: 2rem;

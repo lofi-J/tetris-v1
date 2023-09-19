@@ -80,7 +80,7 @@ const Game = () => {
                         <h1 id="Tetris">TETRIS</h1>
                         <div className="button-list">
                             <button className="btn" onClick={onClickSingle}>Single Play</button>
-                            <button className="btn" onClick={onClickRank}>Ranking</button>
+                            <button className="btn" onClick={() => alert('현재는 지원하지 않는 기능입니다.')}>Ranking</button>
                             <Help />
                         </div>
                         <FontAwesomeIcon className="volumn-icon" icon={isMute ? faVolumeXmark : faVolumeLow} onClick={onClickToggle} />

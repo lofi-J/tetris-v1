@@ -90,7 +90,7 @@ const GameOver = ({ score, restart, setIsStart }) => {
 				<button onClick={restart}>Play Again</button>
 				<button onClick={setIsStart}>Main Menu</button>
 				{score === 0 ? null :
-					!isRank ? <button onClick={onClickSave}>Save Score</button> : (
+					!isRank ? <button onClick={() => alert('현재는 지원하지 않는 기능입니다.')}>Save Score</button> : (
 						<form onSubmit={postTrain} className="input_form">
 							<input type="text" required onChange={handleInputChange} ref={inputRef} />
 							<button type="submit">Save</button>
